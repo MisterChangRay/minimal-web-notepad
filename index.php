@@ -89,7 +89,7 @@ if (is_file($path)) {
       ?></textarea>
   </div>
   <pre id="printable"></pre>
-	<script src="js/script.min.js"></script>
+	<script src="js/script.js"></script>
   <?php
   if ($allow_menu) include 'modules/menu.php';
   if ($allow_lastsaved) include 'modules/lastsaved.php';
@@ -101,4 +101,28 @@ if (is_file($path)) {
   }
 	if ($include_Header) { checkHeader($path, null, true); } //check if the removePassword be shown ?>
 </body>
+<script type="text/javascript">
+    var domReady = function(fn){
+        var completed = function() {
+            document.removeEventListener( "DOMContentLoaded", completed, false );
+            window.removeEventListener( "load", completed, false );
+            fn();
+        };
+        
+        if ( document.readyState === "complete" ) {
+            setTimeout( domReady,0,fn );
+
+        } else {
+            document.addEventListener( "DOMContentLoaded", completed, false );
+            window.addEventListener( "load", completed, false );
+        }
+    }
+
+
+    domReady(function() {
+      if(window.a_view)
+        window.a_view.click();
+    });
+  
+</script>
 </html>
